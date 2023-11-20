@@ -12,9 +12,12 @@
     <div class="container">
         <form action="/cliente" method="post">
         <div class="mb-3">
-            Nome: <input type="text" class="form-control" name="nome">
-            Idade: <input type="text" class="form-control" name="idade">
-            Codigo: <input type="text" class="form-control" name="id">
+            Nome: <input type="text" required class="form-control" name="nome" value= "<%= clienteUpdate.nome %>">
+            Idade: <input type="text" required class="form-control" name="idade" value= "<%= clienteUpdate.idade %>">
+            Codigo: <input type="text" required class="form-control" name="id" value= "<%= clienteUpdate.id %>" 
+                        <% if(clienteUpdate.id != undefined){ %>readonly <% } %>
+                    >
+            <input type="hidden" name="_id" value="<%= clienteUpdate._id %>">
         </div>
         <div>
             <input type="submit" class="btn btn-primary" value="Cadastrar">

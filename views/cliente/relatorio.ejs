@@ -9,9 +9,25 @@
 </head>
 <body>
     <h1>Lista de clientes</h1>
+    <% if(s == 1){ %>
+        <div style="background-color: chartreuse;">
+            Cadastro feito com sucesso    
+        </div>
+    <% } %>
+    <% if(s == 2){  %>
+        <div style="background-color:crimson">
+            Cliente deletado com sucesso    
+        </div>
+    <% } %>
+    <% if(s == 3){  %>
+        <div style="background-color:dodgerblue">
+            Cliente atualizado com sucesso
+        </div>
+    <% } %>
+    <div class="container" style="display: flex;">
     <% for (const c of vetorCliente){ %>
-        <li>
-            <ul>
+        <li style="list-style: none;">
+            <!-- <ul>
                 <a href="/cliente/<%= c.id %>"><b>Nome: </b></a>
                 <%= c.nome %>
             </ul>
@@ -20,11 +36,36 @@
                 <%= c.idade %>
             </ul>
             <ul>
-                <%= c.id %>
+                <b>Código: </b><%= c.id %>
             </ul>
+            <ul>
+                <a href="/cliente/deletar/<%= c.id %>" onclick="return confirm('Tem certeza que deseja excluir?')">excluir</a>
+            </ul>
+            <ul>
+                <a href="/cliente/cadastrar/<%= c.id %>"> atualizar</a>
+            </ul> -->
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="default">
+                <div class="card-body">
+                  <a href="/cliente/<%= c.id %>"><h5 class="card-title"> <%= c.nome %></h5></a>
+                  <p class="card-text">Idade: <%= c.idade %></p>
+                  <p class="card-text">Código: <%= c.id %></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                      <a href="/cliente/deletar/<%= c.id %>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    </li>
+                  <li class="list-group-item"><a href="/cliente/cadastrar/<%= c.id %>"> Atualizar</a></li>
+                  <li class="list-group-item">Fluxo financeiro</li>
+                </ul>
+                <div class="card-body">
+                  <a href="/" class="card-link">Voltar</a>
+                  <a href="/" class="card-link">Voltar</a>
+                </div>
+              </div>
         </li>
     <% } %>
-    <a href="/">voltar</a>
+    </div>
 </body>
 <%- include("../partials/rodape.ejs") %>
 </html>

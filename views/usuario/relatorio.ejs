@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+    <h1>Lista de uSUARIO</h1>
+    <% if(s == 1){ %>
+        <div style="background-color: chartreuse;">
+            Cadastro feito com sucesso    
+        </div>
+    <% } %>
+    <% if(s == 2){  %>
+        <div style="background-color:crimson">
+            uSUARIO deletado com sucesso    
+        </div>
+    <% } %>
+    <% if(s == 3){  %>
+        <div style="background-color:dodgerblue">
+            Usuario atualizado com sucesso
+        </div>
+    <% } %>
+    
+    <div class="container" style="display: flex;">
+    <% for (const c of vetorUsuario){ %>
+        <li style="list-style: none;">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="default">
+                <div class="card-body">
+                  <a href="/usuario/<%= c.id %>"><h5 class="card-title"> <%= c.nome %></h5></a>
+                  <p class="card-text">Email: <%= c.email %></p>
+                  <p class="card-text">Senha: **********</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                      <a href="/usuario/deletar/<%= c._id %>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    </li>
+                  <li class="list-group-item"><a href="/usuario/cadastrar/<%= c._id %>"> Atualizar</a></li>
+                  <li class="list-group-item">Fluxo financeiro</li>
+                </ul>
+                <div class="card-body">
+                  <a href="/" class="card-link">Voltar</a>
+                  <a href="/" class="card-link">Voltar</a>
+                </div>
+              </div>
+        </li>
+    <% } %>
+    </div>
+</body>
+<%- include("../partials/rodape.ejs") %>
+</html>
