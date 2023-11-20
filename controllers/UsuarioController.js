@@ -42,17 +42,22 @@ class UsuarioController{
         }
     }
     static cadastrarGet(req, res){
+        const s = req.query.s;
         const usuarioUpdate = {
             nome: req.query.nome,
             email: req.query.email
         };
-        const s = req.query.s;
-        res.render("usuario/cadastrar", {usuarioUpdate, s});
+        if(req.session.usuario==null){
+            res.render("usuario/cadastrar", {usuarioUpdate, s});
+        }else{
+            res.render("/");
+        }
     }
     static async checkLogin(req, res){
         const user = await UsuarioModel.findOne({ email: req.body.email });
         if(user != null){
             if(bcryptjs.compareSync(req.body.senha, user.senha)){ //email e senha válidos
+                req.session.usuario = user.email;
                 res.redirect("/");
             }else{ //senha inválida
                 res.redirect(`/usuario/login?s=6&email=${req.body.email}`)

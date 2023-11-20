@@ -5,18 +5,18 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const ClienteRoutes = require("./routes/ClienteRoutes");
-app.use(ClienteRoutes);
-
-const UsuarioRoutes = require("./routes/UsuarioRoutes");
-app.use(UsuarioRoutes);
-
 const session = require("express-session");
 app.use(session({
     secret: 'ifpe',
     saveUninitialized: false,
     resave: false
     }));
+const ClienteRoutes = require("./routes/ClienteRoutes");
+app.use(ClienteRoutes);
+
+const UsuarioRoutes = require("./routes/UsuarioRoutes");
+app.use(UsuarioRoutes);
+
 
 require("dotenv/config")
 const mongoose = require("mongoose");
