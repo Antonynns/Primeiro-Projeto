@@ -1,6 +1,6 @@
 const e = require("express");
 const UsuarioModel = require("../models/UsuarioModel");
-
+const bcryptjs = require("bcryptjs");
 class UsuarioController{
     static async cadastrar(req, res){
         console.log(req.body)
@@ -55,10 +55,10 @@ class UsuarioController{
             if(bcryptjs.compareSync(req.body.senha, user.senha)){ //email e senha válidos
                 res.redirect("/");
             }else{ //senha inválida
-                res.redirect(`/usuarios/login?s=6&email=${req.body.email}`)
+                res.redirect(`/usuario/login?s=6&email=${req.body.email}`)
             }
         }else{ //email inválido
-            res.redirect(`/usuarios/login?s=5&email=${req.body.email}`);
+            res.redirect(`/usuario/login?s=5&email=${req.body.email}`);
         }
     }
     static loginRender(req, res){

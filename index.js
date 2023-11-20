@@ -11,6 +11,14 @@ app.use(ClienteRoutes);
 const UsuarioRoutes = require("./routes/UsuarioRoutes");
 app.use(UsuarioRoutes);
 
+const session = require("express-session");
+app.use(session({
+    secret: 'ifpe',
+    saveUninitialized: false,
+    resave: false
+    }));
+
+require("dotenv/config")
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI);
 const ClienteModel = require("./models/ClienteModel");
@@ -25,6 +33,10 @@ app.get("/", function(req, res){
     // }
     res.render("index");
 });
+app.get("/logout", function(req, res){
+    req.session.usuario = null;
+    res.redirect("/usuario/login")
+})
 app.get("/login", function(req, res){
     res.render("login");
 });
