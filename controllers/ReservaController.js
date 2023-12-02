@@ -3,6 +3,7 @@ const ReservaModel = require("../models/ReservaModel");
 class ReservaController{
     static async cadastrar(req, res){
         if(req.body._id == ''){ //cadastrar
+            const reservaUpdate = '';
             const novaReserva = new ReservaModel ({
                 id: req.body.id,
                 titulo: req.body.titulo,
@@ -21,17 +22,26 @@ class ReservaController{
         }
     }
     static cadastrarGet(req, res){
-        res.render("reserva/novaReserva");
+        const s = req.query.s;
+        const reservaUpdate = {
+            titulo: req.query.titulo,
+            prazo: req.query.prazo
+        };
+        if(req.session.usuario==null){
+            res.render("reserva/cadastrar", {reservaUpdate, s});
+        }else{
+            res.render("/");
+        }
     }
     static async listar(req, res){
-        const salvo = req.query.s;
+        const s = req.query.s;
         const vetorReserva = await ReservaModel.find();
-        res.render("reserva/listarReservas", {vetorReserva, salvo});
+        res.render("reserva/relatorio", {vetorReserva, s});
     }
     static async detalhar(req, res){
         const id = req.params.id;
         const reserva = await ReservaModel.findOne({id:id});
-        res.render("reserva/detalharReserva", {reserva});
+        res.render("reserva/detalhar", {reserva});
     }
     static async deletar(req, res){
         const id = req.params.id;

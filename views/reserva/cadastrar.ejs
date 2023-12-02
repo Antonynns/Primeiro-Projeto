@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
+</head>
+<body>
+    <div class="container">
+        <form action="/reserva" method="post">
+        <div class="mb-3">
+            Titulo: <input type="text" required class="form-control" name="titulo" value= "<%= reservaUpdate.titulo %>">
+            Prazo(em dias): <input type="number" required class="form-control" name="prazo" value= "<%= reservaUpdate.prazo %>">
+            <input type="hidden" name="_id" value="<%= reservaUpdate._id %>">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </div>
+        <br>
+    </form>
+    </div>
+    
+</body>
+<%- include("../partials/rodape.ejs") %>
+</html>

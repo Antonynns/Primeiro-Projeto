@@ -8,7 +8,8 @@
     <%- include("../partials/cabecalho.ejs") %>
 </head>
 <body>
-    <h1>Lista de clientes</h1>
+    <h1>Lista de livros reservados</h1>
+    
     <% if(s == 1){ %>
         <div style="background-color: chartreuse;">
             Cadastro feito com sucesso    
@@ -16,45 +17,29 @@
     <% } %>
     <% if(s == 2){  %>
         <div style="background-color:crimson">
-            Cliente deletado com sucesso    
+            reserva excluida com sucesso    
         </div>
     <% } %>
     <% if(s == 3){  %>
         <div style="background-color:dodgerblue">
-            Cliente atualizado com sucesso
+            reserva atualizada com sucesso
         </div>
     <% } %>
+    
     <div class="container" style="display: flex;">
-    <% for (const c of vetorCliente){ %>
+    <% for (const c of vetorReserva){ %>
         <li style="list-style: none;">
-            <!-- <ul>
-                <a href="/cliente/<%= c.id %>"><b>Nome: </b></a>
-                <%= c.nome %>
-            </ul>
-            <ul>
-                <b>Idade: </b>
-                <%= c.idade %>
-            </ul>
-            <ul>
-                <b>Código: </b><%= c.id %>
-            </ul>
-            <ul>
-                <a href="/cliente/deletar/<%= c.id %>" onclick="return confirm('Tem certeza que deseja excluir?')">excluir</a>
-            </ul>
-            <ul>
-                <a href="/cliente/cadastrar/<%= c.id %>"> atualizar</a>
-            </ul> -->
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                  <a href="/cliente/<%= c.id %>"><h5 class="card-title"> <%= c.nome %></h5></a>
-                  <p class="card-text">Idade: <%= c.idade %></p>
-                  <p class="card-text">Código: <%= c.id %></p>
+                  <a href="/reserva/<%= c.id %>"><h5 class="card-title"> <%= c.titulo %></h5></a>
+                  <p class="card-text">Titulo: <%= c.titulo %></p>
+                  <p class="card-text">prazo: <% c.prazo %> dias</p>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
-                      <a href="/cliente/deletar/<%= c.id %>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                      <a href="/reserva/deletar/<%= c._id %>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                     </li>
-                  <li class="list-group-item"><a href="/cliente/cadastrar/<%= c.id %>"> Atualizar</a></li>
+                  <li class="list-group-item"><a href="/reserva/cadastrar/<%= c._id %>"> Atualizar</a></li>
                 </ul>
                 <div class="card-body">
                   <a href="/" class="card-link">Voltar</a>

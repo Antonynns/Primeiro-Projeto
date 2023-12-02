@@ -21,8 +21,10 @@ const ReservaRoutes = require("./routes/ReservaRoutes");
 app.use(ReservaRoutes);
 
 require("dotenv/config");
+
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI);
+
 const ClienteModel = require("./models/ClienteModel");
 
 // senha banco de dados: kPmc5VXZ1gwwPcHJ

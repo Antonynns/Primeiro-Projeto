@@ -8,7 +8,7 @@
     <%- include("../partials/cabecalho.ejs") %>
 </head>
 <body>
-    <h1>Lista de uSUARIO</h1>
+    <h1>Lista de bibliotecarios</h1>
     <% if(s == 1){ %>
         <div style="background-color: chartreuse;">
             Cadastro feito com sucesso    
@@ -29,7 +29,6 @@
     <% for (const c of vetorUsuario){ %>
         <li style="list-style: none;">
             <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="default">
                 <div class="card-body">
                   <a href="/usuario/<%= c.id %>"><h5 class="card-title"> <%= c.nome %></h5></a>
                   <p class="card-text">Email: <%= c.email %></p>
@@ -40,7 +39,6 @@
                       <a href="/usuario/deletar/<%= c._id %>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                     </li>
                   <li class="list-group-item"><a href="/usuario/cadastrar/<%= c._id %>"> Atualizar</a></li>
-                  <li class="list-group-item">Fluxo financeiro</li>
                 </ul>
                 <div class="card-body">
                   <a href="/" class="card-link">Voltar</a>
