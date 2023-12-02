@@ -17,8 +17,10 @@ app.use(ClienteRoutes);
 const UsuarioRoutes = require("./routes/UsuarioRoutes");
 app.use(UsuarioRoutes);
 
+const ReservaRoutes = require("./routes/ReservaRoutes");
+app.use(ReservaRoutes);
 
-require("dotenv/config")
+require("dotenv/config");
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI);
 const ClienteModel = require("./models/ClienteModel");
@@ -60,13 +62,7 @@ app.get("/cliente/cadastrar", function(req, res){
 // });
 
 app.get("/cliente/:id?", function(req, res){
-    
-    if(id != undefined){
-        
-    }else{
-        
-    }
-    
+
 });
 app.use(function(req, res){
     res.status(404).render("erro");
