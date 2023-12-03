@@ -5,13 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <%- include("../partials/cabecalho.ejs") %>
 </head>
 <body>
-    main>
+    <main>
         <section id="login">
-            <div id="imagem">
-                <!-- Aqui vai a imagem nas CSS -->
-            </div>
             <div id="formulario">
                 <h1>Login</h1>
                 <p>Acesse aqui sua conta.</p>
@@ -21,9 +19,9 @@
                             Email inválido!
                         </div>
                     <% } %>
-                    <div class="campo"  <% if(status == 5){ %> style = "background-color: rgb(230, 65, 65); border: 2px solid rgb(230, 65, 65);" <% } %>>
+                    <div class="input-group flex-nowrap"  <% if(status == 5){ %> style = "background-color: rgb(230, 65, 65); border: 2px solid rgb(230, 65, 65);" <% } %>>
                         <i class="material-symbols-outlined">mail</i>
-                        <input type="email" name="email" id="email" value="<%= usuarioLogado.email %>"  placeholder="Seu email" required>
+                        <input type="email" class="form-control" name="email" id="email" value="<%= usuarioLogado.email %>"  placeholder="Seu email" required>
                         <label for="email">Email</label>
                     </div>
                     <% if(status == 6){ %>
@@ -31,9 +29,9 @@
                             Senha inválida!
                         </div>
                     <% } %>
-                    <div class="campo"  <% if(status == 6){ %> style = "background-color: rgb(230, 65, 65); border: 2px solid rgb(230, 65, 65);" <% } %>>
+                    <div class="input-group flex-nowrap"  <% if(status == 6){ %> style = "background-color: rgb(230, 65, 65); border: 2px solid rgb(230, 65, 65);" <% } %>>
                         <i class="material-symbols-outlined">visibility</i>
-                        <input type="password" name="senha" id="senha" placeholder="Sua senha"  min-length="8" required >
+                        <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha"  min-length="8" required >
                         <label for="senha">Senha</label>
                     </div>
                     <input value="Entrar" type="submit" class="cadastrar" >
